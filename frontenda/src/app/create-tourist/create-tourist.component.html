@@ -1,0 +1,57 @@
+<div class="col-md-5 offset-md-3">
+<h3>Create Tourist</h3>
+<form (ngSubmit) = "onSubmit()" [formGroup]="regForm">
+
+    <div class="form-group">
+        <label> ID</label>
+        <input type="text" class="form-control"  id="id" placeholder="EnterID"
+        [(ngModel)] ="tourist.id" name="id" formControlName="id">
+        <small *ngIf="regForm.controls['id'].dirty && regForm.hasError('required','id')" class="text-danger">*ID has only 4 digits</small>
+    </div>
+
+    <div class="form-group">
+        <label> Name</label>
+        <input type="text" class="form-control"  id="name" pattern="[A-Z a-z]+" maxlength="15"
+        [(ngModel)] ="tourist.name" name="name" placeholder="Enter Name" formControlName="name">
+        <small *ngIf="regForm.controls['name'].dirty && regForm.hasError('required','name')" class="text-danger">*Give less Then 15 Alphabats</small>
+    
+    </div>
+
+    <div class="form-group">
+        <label> Gender</label>
+        <div class="form-control">
+        <label class="radio-inline">
+           <input type="radio" name="gender" formControlName="gender" value="male" [(ngModel)]="tourist.gender">Male
+           </label>
+           <label class="radio-inline">
+            <input type="radio"name="gender" formControlName="gender" value="female" [(ngModel)]="tourist.gender">Female
+            </label>
+        </div>
+        <small *ngIf="regForm.controls['gender'].dirty && regForm.hasError('required','gender')" class="text-danger">*Gender is Required</small>
+    </div>
+
+    <div class="form-group">
+        <label> Age</label>
+        <input type="text" class="form-control"  id="age" placeholder="Enter Age"
+        [(ngModel)] ="tourist.age" name="age" formControlName="age">
+        <small *ngIf="regForm.controls['age'].dirty && regForm.hasError('required','age')" class="text-danger">*Give less then 90</small>
+    </div>
+
+    <div class="form-group">
+        <label> FromPlace</label>
+        <input type="text" class="form-control"  id="fromPlace" placeholder="Enter FromPlace"
+        [(ngModel)] ="tourist.fromPlace" name="fromPlace" formControlName="fromPlace">
+
+        <small *ngIf="regForm.controls['fromPlace'].dirty && regForm.hasError('required','fromPlace')" class="text-danger">*Give Alphabats Only</small>
+    </div>
+
+    <div class="form-group">
+        <label> NumberOfDaysVisits</label>
+        <input type="text" class="form-control"  id="numberOfDaysVisits" placeholder="Enter field"
+        [(ngModel)] ="tourist.numberOfDaysVisits" name="numberOfDaysVisits" formControlName="numberOfDaysVisits">
+
+        <small *ngIf="regForm.controls['numberOfDaysVisits'].dirty && regForm.hasError('required','numberOfDaysVisits')" class="text-danger">*Give only Numbers</small>
+    </div>
+        <button [disabled]="regForm.invalid" class="btn btn-warning" type="submit">Submit</button>
+</form>
+</div>
